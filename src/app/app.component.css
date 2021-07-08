@@ -1,7 +1,12 @@
 .toolbar-spacer {
-    flex: 1 1 auto;
-  }
-  
-  a.title {
-    color: white;
-  }
+  flex: 1 1 auto;
+}
+
+a.title {
+  color: white;
+}
+
+.container { 
+  margin-top: 50px;
+  height: calc(100vh - 50px)
+}

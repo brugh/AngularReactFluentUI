@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { initializeIcons } from 'office-ui-fabric-react';
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
+    public router: Router,
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+    console.log("show: " + this.loginDisplay)
   }
 
   checkAndSetActiveAccount(){
@@ -58,6 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   loginRedirect() {
+    console.log('loginRedirect')
     if (this.msalGuardConfig.authRequest){
       this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
     } else {
@@ -80,6 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   logout(popup?: boolean) {
+    console.log('loginout')
     if (popup) {
       this.authService.logoutPopup({
         mainWindowRedirectUri: "/"
@@ -89,6 +94,8 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  nav(route) { this.router.navigate([route]); } 
+  
   ngOnDestroy(): void {
     this._destroying$.next(undefined);
     this._destroying$.complete();

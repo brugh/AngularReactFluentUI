@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
   <a class="title" href="/">{{ title }}</a>
 
   <div class="toolbar-spacer"></div>
@@ -17,7 +17,8 @@
     <button mat-menu-item (click)="logout(true)">Logout using Popup</button>
   </mat-menu>
 
-</mat-toolbar>
+</mat-toolbar> -->
+<app-navbar [loggedin]="!loginDisplay" (profile)="nav('profile')" (home)="nav('')" (login)="loginRedirect()" (logout)="logout(false)"></app-navbar>
 <div class="container">
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   <router-outlet *ngIf="!isIframe"></router-outlet>

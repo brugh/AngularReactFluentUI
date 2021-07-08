@@ -5,17 +5,12 @@ import { IPublicClientApplication, PublicClientApplication, InteractionType, Bro
 import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfiguration, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FailedComponent } from './failed/failed.component';
-import { ButtonComponent, DatePickerComponent, PersonaComponent, PickerComponent } from 'src/wrappers';
+import { ButtonComponent, DatePickerComponent, NavbarComponent, PersonaComponent, PickerComponent } from 'src/wrappers';
 
 
 const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
@@ -76,15 +71,12 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     DatePickerComponent,
     PickerComponent,
     PersonaComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatListModule,
-    MatMenuModule,
     HttpClientModule,
     MsalModule
   ],

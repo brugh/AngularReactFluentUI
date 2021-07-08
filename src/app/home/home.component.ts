@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 import { AuthenticationResult, EventMessage, EventType, InteractionStatus } from '@azure/msal-browser';
 import { filter } from 'rxjs/operators';
-import { DialogType } from 'office-ui-fabric-react/lib/Dialog';
 
 @Component({
   selector: 'app-home',
