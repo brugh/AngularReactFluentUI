@@ -1,6 +1,12 @@
 <div>
-    <p><strong>First Name: </strong> {{profile?.givenName}}</p>
-    <p><strong>Last Name: </strong> {{profile?.surname}}</p>
-    <p><strong>Email: </strong> {{profile?.userPrincipalName}}</p>
-    <p><strong>Id: </strong> {{profile?.id}}</p>
+  <p>
+    <app-persona text="{{profile?.givenName}} {{profile?.surname}}" 
+      [secondaryText]="profile?.userPrincipalName"
+      tertiaryText="Out of Office"
+      optionalText="Back in 10min"
+      [presence]="presence"
+      imageInitials="{{profile?.givenName[0]}}{{profile?.surname[0]}}" 
+      [imageUrl]="profile?.imageUrl">
+    </app-persona>
+  </p>
 </div>

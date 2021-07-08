@@ -11,7 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FailedComponent } from './failed/failed.component';
 import { ButtonComponent, DatePickerComponent, NavbarComponent, PersonaComponent, PickerComponent } from 'src/wrappers';
+import { initializeIcons } from 'office-ui-fabric-react';
 
+initializeIcons();
 
 const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
 
@@ -22,8 +24,8 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: '0c7de0ec-997a-454f-8baf-f380c7f40a70', // PPE testing environment
-      authority: 'https://login.microsoftonline.com/common', // Prod environment. Uncomment to use.
+      clientId: '0c7de0ec-997a-454f-8baf-f380c7f40a70', 
+      authority: 'https://login.microsoftonline.com/common',
       //authority: 'https://login.windows-ppe.net/common', // PPE testing environment.
       redirectUri: '/',
       postLogoutRedirectUri: '/'

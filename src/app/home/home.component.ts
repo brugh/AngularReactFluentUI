@@ -19,21 +19,20 @@ import { filter } from 'rxjs/operators';
     </div>
 
     <div>
-      <app-button class="special" (click)="handle($event)" label="test 123"></app-button>
-      <app-button primary="true" (click)="handle($event)" label="test 234"></app-button>
+      <app-button (click)="handle('test 123')" label="test 123"></app-button>
+      <app-button primary="true" (click)="handle('test 234')" label="test 234"></app-button>
       <app-date-picker></app-date-picker>
       <app-picker (selected)="setcolor($event)"></app-picker>
-      <app-persona></app-persona>
     </div>
-
+    <div [ngStyle]="{'background-color': color}">{{label}}</div>
   `,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   loginDisplay = false;
+  color = 'white';
+  label = 'TEST'
   response = '';
-
-  handle(ev) { console.log(ev); }
 
   constructor(private authService: MsalService, private msalBroadcastService: MsalBroadcastService) { }
 
@@ -56,11 +55,14 @@ export class HomeComponent implements OnInit {
         this.setLoginDisplay();
       })
 
+        this.setLoginDisplay();
   }
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
-  setcolor(ev) { console.log(ev);}
+  setcolor(ev) { this.color = ev.color; }
+
+  handle(label) { this.label = label; }
 }

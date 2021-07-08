@@ -12,13 +12,14 @@ const routes: Routes = [
     canActivate: [MsalGuard]
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
     path: 'login-failed',
     component: FailedComponent
-  }
+  },
+  { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 const isIframe = window !== window.parent && !window.opener; // Remove this line to use Angular Universal
